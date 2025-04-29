@@ -113,7 +113,7 @@ async function registerUser(event) {
 }
 
 
-const apiBase = 'http://localhost:5000/api/users';  // Your backend URL for users
+const apiBase = 'https://healthywealthy.onrender.com/api/users';  // Your backend URL for users
 
 async function loginUser(event) {
   event.preventDefault();

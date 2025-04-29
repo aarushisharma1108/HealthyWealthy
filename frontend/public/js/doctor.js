@@ -64,7 +64,7 @@
 
 
 
-const apiBase = 'http://localhost:5000/api/doctors'; // Your backend URL for doctors
+const apiBase = 'https://healthywealthy.onrender.com/api/doctors'; // Your backend URL for doctors
 
 async function loginDoctor(event) {
   event.preventDefault();
