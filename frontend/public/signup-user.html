@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Signup</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: #97bade;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: #284e74;
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 700px;
+      text-align: center;
+      box-shadow: 0 0 30px #234a71;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .main-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: #f4f6f9;
+      background-clip: text;
+      color: white;
+    }
+
+    h2 {
+      color: #adc8e3;
+      margin-bottom: 25px;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .left-form,
+    .right-form {
+      width: 48%;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .two-column {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.116);
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #fff;
+      box-shadow: inset 0 0 5px rgba(2, 7, 40, 0.5);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    input::placeholder, select {
+      color: #ddd;
+    }
+
+    input:focus, select:focus {
+      background: rgba(36, 64, 113, 0.2);
+      box-shadow: 0 0 10px #336699;
+    }
+
+    select {
+      color: #fff;
+      option {
+        background: #273678;
+        color: #fff;
+      }
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: rgb(180, 205, 234);
+      color: #3d5985;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      background-color: #a7bbdc;
+      color: #3d5985;
+    }
+
+    .switch-link {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .switch-link a {
+      display: inline-block;
+      padding: 10px;
+      border-radius: 10px;
+      background: #336699;
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .switch-link a:hover {
+     background: #24486c;
+     color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="main-title">Healthy Wealthy</div>
+  <h2>User Signup</h2>
+  <form onsubmit="registerUser(event)">
+    <div class="left-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+    </div>
+    <div class="right-form">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <div class="two-column">
+        <input type="text" id="phone" placeholder="Phone">
+        <input type="text" id="address" placeholder="Address">
+      </div>
+      <div class="two-column">
+        <input type="number" id="age" placeholder="Age">
+        <select id="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  <div class="switch-link">
+    <a href="login-user.html">Already a User? Login</a>
+    <a href="login-doctor.html">Are you a Doctor?</a>
+  </div>
+</div>
+
+<script src="js/user.js"></script>
+</body>
+</html>

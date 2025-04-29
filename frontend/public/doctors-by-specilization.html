@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* CSS for the Doctors by Specialization Page */
+.doctors {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.doctor-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.doctor-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+}
+
+.doctor-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.book-appointment-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.book-appointment-btn:hover {
+  background-color: #45a049;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+@media (max-width: 600px) {
+  .doctor-container {
+    grid-template-columns: 1fr; /* Stack the cards in a single column on small screens */
+    gap: 20px; /* Reduce gap between items */
+  }
+  
+  .doctor-card {
+    width: 90%; /* Make doctor cards more responsive */
+  }
+
+  h2 {
+    font-size: 24px; /* Adjust heading size for smaller screens */
+  }
+
+  .book-appointment-btn {
+    font-size: 14px; /* Smaller button text for better fit */
+    padding: 8px 16px; /* Adjust padding */
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Doctors by Specialization Page -->
+<section id="doctors-list" class="doctors">
+    <h2>Doctors in {{specialization}} Specialization</h2>
+    <div class="doctor-container">
+      <!-- Doctors will be listed here dynamically -->
+    </div>
+  </section>
+  
+  <script>
+    // Get the specialization from the URL
+    const specialization = window.location.pathname.split('/').pop();
+  
+    async function fetchDoctorsBySpecialization() {
+      try {
+        const response = await fetch(`/api/doctors/specialization/${specialization}`);
+        // window.location.href = `/api/doctors/specialization/${specialization}`;
+
+        const doctors = await response.json();
+  
+        const doctorContainer = document.querySelector('.doctor-container');
+        if (doctors.length === 0) {
+          doctorContainer.innerHTML = `<p>No doctors found in this specialization.</p>`;
+          return;
+        }
+  
+        // Populate the doctors' list
+        doctors.forEach(doctor => {
+          const doctorCard = document.createElement('div');
+          doctorCard.classList.add('doctor-card');
+          doctorCard.innerHTML = `
+            <img src="${doctor.profilePic || '/images/default-avatar.jpg'}" alt="${doctor.name}">
+            <h3>${doctor.name}</h3>
+            <p>Specialization: ${doctor.specialization}</p>
+            <p>Experience: ${doctor.experienceYears} years</p>
+            <a href="/book-appointment/${doctor._id}" class="book-appointment-btn">Book Appointment</a>
+          `;
+          doctorContainer.appendChild(doctorCard);
+        });
+      } catch (error) {
+        console.error('Error fetching doctors:', error);
+        alert('Failed to load doctors. Please try again later.');
+      }
+    }
+  
+    // Call function to fetch doctors
+    document.addEventListener('DOMContentLoaded', fetchDoctorsBySpecialization);
+  </script>
+  
+</body>
+</html>

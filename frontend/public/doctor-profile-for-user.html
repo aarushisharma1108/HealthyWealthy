@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Profile</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <style>
+
+    /* Body and Layout */
+/* Global styles for the profile page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb; /* Light background color */
+    color: #333; /* Dark text color for readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(49, 47, 47, 0.1);
+  position: sticky;
+  top: 0;
+}
+
+/* Logo Styling */
+.navbar .logo {
+  display: flex;
+  align-items: center;  /* Vertically center the content */
+  justify-content: center;  /* Horizontally center the content */
+}
+
+.navbar .logo img {
+  height: 50px;
+  margin-right: 10px;  /* Add space between the logo image and the text */
+}
+
+.navbar .logo span {
+  font-size: 2rem;  /* Big font size */
+  color: #366299;  /* Black text color */
+  font-weight: bold;  /* Bold text */
+}
+
+
+
+/* Navbar Links */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar .nav-links li {
+  margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: rgb(237, 242, 243);  
+  font-weight: bold;
+  background-color: #366299;  
+  padding: 10px 15px;  
+  border-radius: 5px; 
+  transition: all 0.3s ease;  
+}
+
+.navbar .nav-links a:hover {
+  color: white;  
+  background-color: #5778a0;  
+  transform: scale(1.1);  /* Slightly increase size on hover */
+  animation: hoverAnimation 0.3s ease-in-out;  /* Add hover animation */
+}
+
+/* Hover Animation */
+@keyframes hoverAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Profile Section Styles */
+.profile {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #366299;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #f0f1f4;
+}
+
+/* Profile Container */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+    background-color: #bbd7f3;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(1, 28, 67, 0.1);
+}
+
+.profile-card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.profile-card h3 {
+    font-size: 1.5rem;
+    color: #406592;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.profile-card .specialization {
+    font-size: 1.2rem;
+    color: #426dad;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styling each profile detail */
+.profile-card p {
+    font-size: 1rem;
+    color: #0f0957;
+    margin: 10px 0;
+}
+
+/* Adding separation after each detail */
+.profile-card p + p {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+/* Schedule Appointment Button */
+.schedule-appointment-btn {
+    background-color: #2a599a;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    margin-top: 30px;
+    text-decoration: none;
+    display: block;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s;
+}
+
+.schedule-appointment-btn:hover {
+    background-color: #4d7dc5; /* Darker blue for hover effect */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .profile-card img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .profile-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .profile-card .specialization {
+        font-size: 1rem;
+    }
+
+    .schedule-appointment-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+  </style>
+</head>
+
+
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+          <img src="/images/logo.png" alt="logo">
+          <span>HealthyWealthy</span>
+        </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#appointments">Appointments</a></li>
+        <!-- <li><a href="#chat">Chat</a></li> -->
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="#logout">Logout</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Profile Section -->
+    <section id="profile" class="profile">
+      <h2>Doctor Profile</h2>
+      <div class="profile-container">
+        <div class="profile-card">
+          <img id="doctorImage" src="/images/profile-picture.jpg" alt="Doctor Picture">
+          <h3 id="doctorName">Doctor Name</h3>
+          <p id="doctorSpecialization" class="specialization">Specialization</p>
+          <p id="doctorBio">Bio will be displayed here.</p>
+          <p id="doctorEmail">Email: email@example.com</p>
+          <p id="doctorPhone">Phone: +1234567890</p>
+          <p id="doctorAddress">Address: Clinic Address</p>
+          <p id="doctorExperience">Experience: X years</p>
+          <p id="doctorCollege">College: College Name</p>
+          <p id="doctorAwards">Awards: Not Available</p>
+          <p id="doctorMemberships">Memberships: Not Available</p>
+          <p id="doctorLanguages">Languages: Not Available</p>
+          <!-- <a href="/appointments" class="schedule-appointment-btn">Schedule Appointment</a> -->
+          <a id="scheduleAppointmentBtn" class="schedule-appointment-btn">Schedule Appointment</a>
+
+        </div>
+      </div>
+    </section>
+  
+    <!-- <script src="profile.js"></script> -->
+  
+    <script>
+      // Fetch and display the doctor's profile data
+      async function fetchDoctorProfile() {
+        try {
+            const urlParams = new URLSearchParams(window.location.search); 
+
+            const doctorId = urlParams.get('doctorId');
+
+          const response = await fetch(`/api/doctors/doctor/${doctorId}`, {
+            credentials: 'include', // IMPORTANT: send cookies (token) along with request
+          });
+    
+          if (!response.ok) {
+            throw new Error('Failed to fetch profile');
+          }
+
+          const doctor = await response.json();
+    
+          // Populate the profile with the doctor data
+          document.getElementById('doctorImage').src = doctor.profilePic || '/images/profile-picture.jpg';
+          document.getElementById('doctorName').textContent = doctor.name;
+          document.getElementById('doctorSpecialization').textContent = doctor.specialization || 'Not available';
+          document.getElementById('doctorBio').textContent = doctor.bio || 'No bio available.';
+          document.getElementById('doctorEmail').textContent = `Email: ${doctor.email}`;
+          document.getElementById('doctorPhone').textContent = `Phone: ${doctor.phone || 'Not available'}`;
+          document.getElementById('doctorAddress').textContent = `Address: ${doctor.address || 'Not available'}`;
+          document.getElementById('doctorExperience').textContent = `Experience: ${doctor.experienceYears || 'Not available'}`;
+          document.getElementById('doctorCollege').textContent = `College: ${doctor.collegeName || 'Not available'}`;
+          document.getElementById('doctorAwards').textContent = `Awards: ${doctor.awards.join(', ') || 'Not Available'}`;
+          document.getElementById('doctorMemberships').textContent = `Memberships: ${doctor.memberships.join(', ') || 'Not Available'}`;
+          document.getElementById('doctorLanguages').textContent = `Languages: ${doctor.languagesSpoken.join(', ') || 'Not Available'}`;
+        } catch (error) {
+          console.error('Error fetching doctor profile:', error);
+          alert('Error loading profile. Please try again.');
+        }
+      }
+    
+
+// sending the doctor id to teh server fron query parameter of this profile page url
+      const urlParams = new URLSearchParams(window.location.search);
+  const doctorId = urlParams.get('doctorId');
+
+  const scheduleBtn = document.getElementById('scheduleAppointmentBtn');
+  scheduleBtn.addEventListener('click', () => {
+    if (doctorId) {
+      // Redirect to a special server route where form will be shown
+      window.location.href = `/appointments/create?doctorId=${doctorId}`;
+    } else {
+      alert('Doctor ID missing. Cannot schedule appointment.');
+    }
+  });
+      // Call the function when the page loads
+      document.addEventListener('DOMContentLoaded', fetchDoctorProfile);
+    </script>
+    
+  </body>
+  </html>
+  

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthy Wealthy - Home</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <style>
+
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and Layout */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(49, 47, 47, 0.1);
+  position: sticky;
+  top: 0;
+}
+
+/* Logo Styling */
+.navbar .logo {
+  display: flex;
+  align-items: center;  /* Vertically center the content */
+  justify-content: center;  /* Horizontally center the content */
+}
+
+.navbar .logo img {
+  height: 50px;
+  margin-right: 10px;  /* Add space between the logo image and the text */
+}
+
+.navbar .logo span {
+  font-size: 2rem;  /* Big font size */
+  color: #366299;  /* Black text color */
+  font-weight: bold;  /* Bold text */
+}
+
+/* Navbar Links */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar .nav-links li {
+  margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: rgb(237, 242, 243);  
+  font-weight: bold;
+  background-color: #366299;  
+  padding: 10px 15px;  
+  border-radius: 5px; 
+  transition: all 0.3s ease;  
+}
+
+.navbar .nav-links a:hover {
+  color: white;  
+  background-color: #5778a0;  
+  transform: scale(1.1);  /* Slightly increase size on hover */
+  animation: hoverAnimation 0.3s ease-in-out;  /* Add hover animation */
+}
+
+/* Hover Animation */
+@keyframes hoverAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 2rem;
+  background-color: #366299;
+  color: white;
+  height: 600px;
+}
+
+.hero .hero-content {
+  max-width: 30%;
+}
+
+.hero .hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero .hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero .cta-button {
+  background-color: white;
+  color: rgb(61, 114, 194);
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.hero .cta-button:hover {
+  background-color: rgb(130, 163, 214);
+  color:white;
+}
+
+.hero .hero-image img {
+  height: 550px;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* About Section */
+.about {
+  color: #366299;
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #bad6e7;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #366299;
+}
+
+/* Doctor Info */
+.doctor-info-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.doctor-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-width: 250px;
+  text-align: center;
+  flex-shrink: 0; /* Prevents the cards from shrinking */
+}
+
+.doctor-card img {
+  width: 90%;
+  height: 200px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.doctor-card h3 {
+  font-size: 1.8rem;
+  color: #394d8e;
+  margin-bottom: 10px;
+}
+
+.doctor-card p {
+  font-size: 1.1rem;
+  color: #385f81;
+  margin-bottom: 15px;
+}
+
+.doctor-card .specialization {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #366299;
+}
+
+.doctor-card .visit-profile-btn {
+  background-color: #366299;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.doctor-card .visit-profile-btn:hover {
+  background-color: #537298;
+}
+
+/* Doctor Info */
+.doctor-info-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.doctor-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.doctor-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.doctor-card h3 {
+  font-size: 1.8rem;
+  color: #2e4a8f;
+  margin-bottom: 10px;
+}
+
+.doctor-card p {
+  font-size: 1.1rem;
+  color: #415782;
+  margin-bottom: 15px;
+}
+
+.doctor-card .specialization {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: rgb(58, 89, 136);
+}
+
+/* Services Section */
+.services {
+  padding: 3rem 2rem;
+  background-color: #366299;
+  color: white;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: space-evenly;
+}
+.learnmore{
+  background-color: #2e4a8f;
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 15%;
+  font-weight: bold;
+  font-size: large;
+}
+.learnmore:hover{
+  background-color: #233769;
+}
+.card {
+  background-color: white;
+  color: rgb(65, 87, 151);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 30%;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem;
+  background-color: #cad4de;
+  color: rgb(141, 156, 180);
+  text-align: center;
+}
+
+.footer .footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer .footer-links li {
+  margin: 0 1rem;
+}
+
+.footer .footer-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+  color: rgb(61, 114, 194);
+}
+
+.footer p {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero .hero-content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
+}
+
+.modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+            .modal-content {
+                background-color: #fff;
+                padding: 2rem;
+                border-radius: 10px;
+                max-width: 600px;
+                width: 90%;
+                text-align: left;
+            }
+            .modal-content h2 {
+                margin-bottom: 1rem;
+            }
+            .modal-content button {
+                margin-top: 1rem;
+                padding: 10px 15px;
+                border: none;
+                background-color: #2e4b83;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .list-section ul {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-top: 1rem;
+            }
+        
+  </style>
+</head>
+<!-- <body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+        <span>HealthyWealthy</span>
+      </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="/appointments">Appointments</a></li>
+      <!-- <li><a href="#chat">Chat</a></li> -->
+      <li><a href="/profile">Profile</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to HealthyWealthy</h1>
+      <p>Your trusted partner to book your Doctor's Appointment Online</p>
+     
+      <a href="doctors-specilization" class="cta-button">Book an Appointment</a>
+    </div>
+    <div class="hero-image">
+        <img src="/images/about-3.png" alt="About 1">
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>We are committed to provide top-notch healthcare services with a focus on patient well-being.</p>
+  
+    <!-- Doctors Section -->
+    <div class="doctor-info-container">
+      <!-- This will be dynamically populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <img src="/images/blog 1.png" alt="General Consultation">
+        <p>Free Checkups</p>
+        <p style="color: rgb(62, 94, 137); font-weight: lighter; text-align: justify;">We offer free checkups to promote preventive healthcare and early diagnosis. Prioritize your well-being with regular screenings and expert medical guidance at no cost.</p>
+                 <button class="learnmore" data-type="checkup">Learn More</button>   
+      </div>
+      <div class="card">
+        <img src="/images/about-2.png" alt="Specialist Care">
+        <p>Emergency Rooms</p>
+        <p style="color: rgb(62, 94, 137); font-weight: lighter; text-align: justify;">Our Emergency Rooms are equipped to handle critical situations with speed and precision. With expert medical staff and advanced facilities, we ensure immediate care when every moment counts.</p>
+       <button class="learnmore" data-type="emergency">Learn More</button>   
+</div>
+<div class="card">
+  <img src="/images/about-1.png" alt="Emergency Services">
+  <p>Emergency Ambulance Services</p>
+  <p style="color: rgb(62, 94, 137); font-weight: lighter; text-align: justify;">HealthyWealthy provides 24/7 ambulance services for swift and safe medical transport. Whether it's an emergency or a routine transfer, our trained professionals ensure timely care when every second matters.</p>
+  <button class="learnmore" data-type="ambulance">Learn More</button>   
+
+</div>
+      </div>
+    </div>
+  </section>
+  <div class="modal" id="infoModal">
+    <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <div class="list-section" id="modalContent"></div>
+        <button onclick="document.getElementById('infoModal').style.display='none'">Close</button>
+    </div>
+</div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    
+    <p>&copy; 2025 Healthy Wealthy. All rights reserved.</p>
+  </footer>
+
+  <script>
+
+    // Fetch doctor data and display it
+    async function fetchDoctors() {
+  try {
+    const response = await fetch('/api/doctors/all');  // Replace with the correct API endpoint
+    const doctors = await response.json();
+
+    const doctorInfoContainer = document.querySelector('.doctor-info-container');
+
+    // Loop through each doctor and create a card for each
+    doctors.forEach(doctor => {
+      const doctorCard = document.createElement('div');
+      doctorCard.classList.add('doctor-card');
+
+      // Set doctor details
+      doctorCard.innerHTML = `
+        <img src="/images/profile-picture.jpg" alt="Doctor Picture">
+        <h3>${doctor.name}</h3>
+        <p class="specialization">${doctor.specialization}</p>
+        <a href="/doctor-profile-for-user?doctorId=${doctor._id}" class="visit-profile-btn">Visit Profile</a>
+      `;
+
+      // Append the card to the container
+      doctorInfoContainer.appendChild(doctorCard);
+    });
+  } catch (error) {
+    console.error('Error fetching doctor data:', error);
+  }
+}
+
+
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', fetchDoctors);
+
+const ambulanceList = [
+            "+91 98765 43210 - CityCare Ambulance",
+            "+91 99887 76654 - QuickAid Ambulance",
+            "+91 91234 56789 - 24x7 Emergency Wheels"
+        ];
+
+        const emergencyRooms = [
+            "Apollo Hospital - Sector 9 - +91 90213 12121",
+            "Fortis Emergency Room - Phase 7 - +91 98100 10000",
+            "Max Hospital ER - Sector 26 - +91 78945 12345"
+        ];
+
+        const checkups = [
+            "Blood Sugar Test - Free every Monday - Civil Hospital",
+            "Blood Pressure & BMI Check - Daily - Red Cross Clinic",
+            "Eye Check-up Camp - Every Friday - Rotary Health Centre"
+        ];
+
+        document.querySelectorAll('.learnmore').forEach(button => {
+            button.addEventListener('click', () => {
+                const type = button.getAttribute('data-type');
+                const modal = document.getElementById('infoModal');
+                const title = document.getElementById('modalTitle');
+                const content = document.getElementById('modalContent');
+
+                let list = [];
+
+                if (type === 'ambulance') {
+                    title.textContent = 'Nearby Ambulance Services';
+                    list = ambulanceList;
+                } else if (type === 'emergency') {
+                    title.textContent = 'Emergency Rooms in Hospitals';
+                    list = emergencyRooms;
+                } else if (type === 'checkup') {
+                    title.textContent = 'Free Check-up Facilities';
+                    list = checkups;
+                }
+
+                content.innerHTML = '<ul>' + list.map(item => `<li>${item}</li>`).join('') + '</ul>';
+                modal.style.display = 'flex';
+            });
+        });
+
+  </script>
+</body>
+</html>

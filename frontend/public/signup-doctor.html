@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Signup</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: fit-content;
+      background: #b5cfe9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background:#336699;
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 700px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .main-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: white;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+
+    h2 {
+      color: #e9ebf3;
+      margin-bottom: 25px;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .left-form,
+    .right-form {
+      width: 48%;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .two-column {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #fff;
+      box-shadow: inset 0 0 5px rgba(12, 38, 82, 0.5);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    input::placeholder, select, textarea {
+      color: #ddd;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px #000000;
+    }
+
+    select {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    textarea#bio {
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: rgb(180, 205, 234);
+      color: #3d5985;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    #bio{
+      color: white;
+    }
+
+    button:hover {
+      background-color: #a7bbdc;
+      color: #3d5985;
+    }
+
+    .switch-link {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .switch-link a {
+      display: inline-block;
+      padding: 10px;
+      border-radius: 10px;
+      background: #336699;
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .switch-link a:hover {
+      background: #24486c;
+     color: #fff;
+    }
+
+    .array-input {
+      margin-top: 10px;
+      color: #bad7f4;
+      font-size: large;
+
+    }
+
+    .array-input input {
+      margin-bottom: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #fff;
+      box-shadow: inset 0 0 5px rgba(31, 29, 146, 0.5);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    input::placeholder, select {
+      color: #ddd;
+    }
+
+    input:focus, select:focus {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px #171363;
+    }
+
+    select {
+      color: #fff;
+      option {
+        background: #333;
+        color: #fff;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="main-title">Healthy Wealthy</div>
+  <h2>Doctor Signup</h2>
+  <form onsubmit="registerDoctor(event)">
+    <div class="left-form">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="text" id="phone" placeholder="Phone">
+      <input type="text" id="address" placeholder="Address">
+        <select id="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      <textarea id="bio" placeholder="Short Bio"></textarea>
+    </div>
+    <div class="right-form">
+      <div class="two-column">
+        <input type="text" id="degrees" placeholder="Degree">
+        <input type="text" id="collegeName" placeholder="College Name">
+      </div>
+      <div class="two-column">
+        <input type="number" id="experienceYears" placeholder="Experience">
+        <input type="text" id="specialization" placeholder="Specialization" required>
+      </div>
+      <div class="array-input">
+        <label for="availableTimes">Available Timings:</label>
+        <input type="text" id="availableTimes" placeholder="e.g., Mon-Fri 10AM-2PM">
+      </div>
+      <div class="array-input">
+        <label for="awards">Any Awards</label>
+        <input type="text" id="awards" placeholder="e.g., Best Doctor Award">
+      </div>
+      <div class="array-input">
+        <label for="memberships">Memberships</label>
+        <input type="text" id="memberships" placeholder="e.g., Medical Society">
+      </div>
+      <div class="array-input">
+        <label for="languagesSpoken">Languages Spoken</label>
+        <input type="text" id="languagesSpoken" placeholder="e.g., English, Spanish">
+      </div>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  <div class="switch-link">
+    <a href="login-doctor.html">Already a Doctor? Login</a>
+    <a href="login-user.html">Are you a Patient?</a>
+  </div>
+</div>
+
+<script src="js/doctor.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Profile</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <style>
+    /* Global Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7fb;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Navbar Styling */
+    /* Navbar */
+    .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(49, 47, 47, 0.1);
+  position: sticky;
+  top: 0;
+}
+
+/* Logo Styling */
+.navbar .logo {
+  display: flex;
+  align-items: center;  /* Vertically center the content */
+  justify-content: center;  /* Horizontally center the content */
+}
+
+.navbar .logo img {
+  height: 50px;
+  margin-right: 10px;  /* Add space between the logo image and the text */
+}
+
+.navbar .logo span {
+  font-size: 2rem;  /* Big font size */
+  color: #366299;  /* Black text color */
+  font-weight: bold;  /* Bold text */
+}
+
+
+
+/* Navbar Links */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar .nav-links li {
+  margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: rgb(237, 242, 243);  
+  font-weight: bold;
+  background-color: #366299;  
+  padding: 10px 15px;  
+  border-radius: 5px; 
+  transition: all 0.3s ease;  
+}
+
+.navbar .nav-links a:hover {
+  color: white;  
+  background-color: #5778a0;  
+  transform: scale(1.1);  /* Slightly increase size on hover */
+  animation: hoverAnimation 0.3s ease-in-out;  /* Add hover animation */
+}
+
+/* Hover Animation */
+@keyframes hoverAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+    /* Profile Section Styles */
+    .profile {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: #2b317f;
+    }
+
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 80%;
+        max-width: 900px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-card img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        object-fit: cover;
+    }
+
+    .profile-card h3 {
+        font-size: 1.5rem;
+        color: #344d84;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .profile-card .specialization {
+        font-size: 1.2rem;
+        color: #008cba;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-card p {
+        font-size: 1rem;
+        color: #070d49;
+        margin: 10px 0;
+    }
+
+    .profile-card p + p {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+    .schedule-appointment-btn {
+        background-color: #008cba;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        margin-top: 30px;
+        text-decoration: none;
+        display: block;
+        width: max-content;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background-color 0.3s;
+    }
+
+    .schedule-appointment-btn:hover {
+        background-color: #005f72;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .profile-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-card {
+            width: 90%;
+            padding: 15px;
+        }
+
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .profile-card h3 {
+            font-size: 1.2rem;
+        }
+
+        .profile-card .specialization {
+            font-size: 1rem;
+        }
+
+        .schedule-appointment-btn {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+
+    #logout-btn {
+    background-color: #f44336; /* Red background for logout */
+    
+    color: white; /* White text */
+    font-size: 16px; /* Adjust font size */
+    padding: 10px 20px; /* Padding for better button size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+#logout-btn:hover {
+    background-color: #d32f2f; /* Darker red when hovering */
+    transform: scale(1.05); /* Slightly enlarge the button when hovering */
+}
+
+#logout-btn:focus {
+    outline: none; /* Remove focus outline for a cleaner look */
+}
+
+#logout-btn:active {
+    background-color: #b71c1c; /* Even darker red when clicked */
+}
+  </style>
+</head>
+
+
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+          <img src="/images/logo.png" alt="logo">
+          <span>healthy-wealthy.com</span>
+        </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+        <!-- <li><a href="#chat">Chat</a></li> -->
+        <li><a href="/profile">Profile</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Profile Section -->
+    <section id="profile" class="profile">
+      <h2>Doctor Profile</h2>
+      <div class="profile-container">
+        <div class="profile-card">
+          <img id="doctorImage" src="/images/profile-picture.jpg" alt="Doctor Picture">
+          <h3 id="doctorName">Doctor Name</h3>
+          <p id="doctorSpecialization" class="specialization">Specialization</p>
+          <button id="logout-btn">Logout</button>
+          <p id="doctorBio">Bio will be displayed here.</p>
+          <p id="doctorEmail">Email: email@example.com</p>
+          <p id="doctorPhone">Phone: +1234567890</p>
+          <p id="doctorAddress">Address: Clinic Address</p>
+          <p id="doctorExperience">Experience: X years</p>
+          <p id="doctorCollege">College: College Name</p>
+          <p id="doctorAwards">Awards: Not Available</p>
+          <p id="doctorMemberships">Memberships: Not Available</p>
+          <p id="doctorLanguages">Languages: Not Available</p>
+          <!-- <a href="/appointments" class="schedule-appointment-btn">Schedule Appointment</a> -->
+        </div>
+      </div>
+    </section>
+  
+    <!-- <script src="profile.js"></script> -->
+  
+    <script>
+      // Fetch and display the doctor's profile data
+      async function fetchDoctorProfile() {
+        try {
+          const response = await fetch('/api/doctors/profile', {
+            credentials: 'include', // IMPORTANT: send cookies (token) along with request
+          });
+    
+          if (!response.ok) {
+            throw new Error('Failed to fetch profile');
+          }
+    
+          const doctor = await response.json();
+    
+          // Populate the profile with the doctor data
+          document.getElementById('doctorImage').src = doctor.profilePic || '/images/profile-picture.jpg';
+          document.getElementById('doctorName').textContent = doctor.name;
+          document.getElementById('doctorSpecialization').textContent = doctor.specialization || 'Not available';
+          document.getElementById('doctorBio').textContent = doctor.bio || 'No bio available.';
+          document.getElementById('doctorEmail').textContent = `Email: ${doctor.email}`;
+          document.getElementById('doctorPhone').textContent = `Phone: ${doctor.phone || 'Not available'}`;
+          document.getElementById('doctorAddress').textContent = `Address: ${doctor.address || 'Not available'}`;
+          document.getElementById('doctorExperience').textContent = `Experience: ${doctor.experienceYears || 'Not available'}`;
+          document.getElementById('doctorCollege').textContent = `College: ${doctor.collegeName || 'Not available'}`;
+          document.getElementById('doctorAwards').textContent = `Awards: ${doctor.awards.join(', ') || 'Not Available'}`;
+          document.getElementById('doctorMemberships').textContent = `Memberships: ${doctor.memberships.join(', ') || 'Not Available'}`;
+          document.getElementById('doctorLanguages').textContent = `Languages: ${doctor.languagesSpoken.join(', ') || 'Not Available'}`;
+        } catch (error) {
+          console.error('Error fetching doctor profile:', error);
+          alert('Error loading profile. Please try again.');
+        }
+      }
+
+
+      
+document.getElementById('logout-btn').addEventListener('click', async () => {
+    try {
+      const response = await fetch('/api/doctors/logout', {
+        method: 'POST',
+        credentials: 'include',  // Ensure cookies are sent with the request
+      });
+
+      if (response.ok) {
+        alert('Logged out successfully!');
+        window.location.href = '/login-doctor'; // Redirect to login page after successful logout
+      } else {
+        const error = await response.json();
+        alert(`Error: ${error.message}`);
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  });
+    
+      // Call the function when the page loads
+      document.addEventListener('DOMContentLoaded', fetchDoctorProfile);
+    </script>
+    
+  </body>
+  </html>
+  

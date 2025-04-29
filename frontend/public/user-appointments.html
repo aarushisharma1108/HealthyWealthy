@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Appointments</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(49, 47, 47, 0.1);
+  position: sticky;
+  top: 0;
+}
+
+/* Logo Styling */
+.navbar .logo {
+  display: flex;
+  align-items: center;  /* Vertically center the content */
+  justify-content: center;  /* Horizontally center the content */
+}
+
+.navbar .logo img {
+  height: 50px;
+  margin-right: 10px;  /* Add space between the logo image and the text */
+}
+
+.navbar .logo span {
+  font-size: 2rem;  /* Big font size */
+  color: #366299;  /* Black text color */
+  font-weight: bold;  /* Bold text */
+}
+
+
+
+/* Navbar Links */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar .nav-links li {
+  margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: rgb(237, 242, 243);  
+  font-weight: bold;
+  background-color: #366299;  
+  padding: 10px 15px;  
+  border-radius: 5px; 
+  transition: all 0.3s ease;  
+}
+
+.navbar .nav-links a:hover {
+  color: white;  
+  background-color: #5778a0;  
+  transform: scale(1.1);  /* Slightly increase size on hover */
+  animation: hoverAnimation 0.3s ease-in-out;  /* Add hover animation */
+}
+
+/* Hover Animation */
+@keyframes hoverAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+main {
+    padding: 20px;
+}
+
+h1 {
+    color: #2a4582;
+}
+
+#appointments-list {
+    margin-top: 20px;
+}
+
+.appointment-item {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-item h3 {
+    margin: 0;
+    color: #34567b;
+}
+
+    </style>
+</head>
+<body>
+   <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+        <span>HealthyWealthy</span>
+      </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="/appointments">Appointments</a></li>
+      <!-- <li><a href="#chat">Chat</a></li> -->
+      <li><a href="/profile">Profile</a></li>
+    </ul>
+  </nav>
+
+    <main>
+        <h1>Your Appointments</h1>
+        <div id="appointments-list">
+            <!-- Appointments will be displayed here dynamically -->
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch appointments data
+            fetch('/api/appointments/appointments', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(appointments => {
+                const appointmentsList = document.getElementById('appointments-list');
+                appointmentsList.innerHTML = ''; // Clear any existing data
+                
+                if (appointments.length === 0) {
+                    appointmentsList.innerHTML = '<p>No appointments scheduled.</p>';
+                } else {
+                    appointments.forEach(appointment => {
+                        const appointmentDiv = document.createElement('div');
+                        appointmentDiv.classList.add('appointment-item');
+                        appointmentDiv.innerHTML = `
+                            <h3>Appointment with Dr. ${appointment.doctor.name}</h3>
+                            <p><strong>Specialization:</strong> ${appointment.doctor.specialization}</p>
+                            <p><strong>Scheduled Date:</strong> ${new Date(appointment.appointmentDate).toLocaleDateString()}</p>
+                            <p><strong>Scheduled Time:</strong> ${appointment.appointmentTime}</p>
+                            <p><strong>Status:</strong> ${appointment.status}</p>
+                            <p><strong>Reason:</strong> ${appointment.reason || 'No reason provided'}</p>
+                            <p><strong>Requested At:</strong> ${new Date(appointment.requestedAt).toLocaleString()}</p>
+                        `;
+                        appointmentsList.appendChild(appointmentDiv);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching appointments:', error);
+                document.getElementById('appointments-list').innerHTML = '<p>Error loading appointments.</p>';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Specialization</title>
+    <style>
+/* CSS for the Doctor Specialization Page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(49, 47, 47, 0.1);
+  position: sticky;
+  top: 0;
+}
+
+/* Logo Styling */
+.navbar .logo {
+  display: flex;
+  align-items: center;  /* Vertically center the content */
+  justify-content: center;  /* Horizontally center the content */
+}
+
+.navbar .logo img {
+  height: 50px;
+  margin-right: 10px;  /* Add space between the logo image and the text */
+}
+
+.navbar .logo span {
+  font-size: 2rem;  /* Big font size */
+  color: #366299;  /* Black text color */
+  font-weight: bold;  /* Bold text */
+}
+
+
+
+/* Navbar Links */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar .nav-links li {
+  margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: rgb(237, 242, 243);  
+  font-weight: bold;
+  background-color: #366299;  
+  padding: 10px 15px;  
+  border-radius: 5px; 
+  transition: all 0.3s ease;  
+}
+
+.navbar .nav-links a:hover {
+  color: white;  
+  background-color: #5778a0;  
+  transform: scale(1.1);  /* Slightly increase size on hover */
+  animation: hoverAnimation 0.3s ease-in-out;  /* Add hover animation */
+}
+
+@keyframes hoverAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.specializations {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #749ac9;
+}
+
+.specialization-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+    padding: 0 10%;
+}
+
+.specialization-card {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgb(42, 84, 131);
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.specialization-card:hover {
+    transform: translateY(-5px);
+   
+}
+
+.specialization-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.specialization-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #244797;
+}
+
+.specialization-description {
+    font-size: 14px;
+    color: #48619c;
+    margin-bottom: 15px;
+}
+
+.specialization-btn {
+    background-color: rgb(31, 67, 108);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.specialization-btn:hover {
+    background-color: #416c9e;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #284b8c;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: WHITE;
+    color: BLACK;
+    transition: left 0.3s ease-in-out;
+    padding-top: 20px;
+    overflow-y: auto;
+    margin: 10px;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 20px 20px;
+    border-bottom: 1px solid #555;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: BLACK;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+.specialization-container.grid-2-columns {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Styles for doctor profile image */
+.doctor-img img {
+    width: 50px; /* Adjusted to match the height of the doctor's name */
+    height: 50px; /* Ensures the image stays circular */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image maintains aspect ratio and covers the circle */
+    margin-right: 15px; /* Space between image and name */
+    vertical-align: middle; /* Aligns image with text */
+}
+
+/* Styles for doctor name and specialization text */
+.doctor-info a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.doctor-info p {
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 60px; /* Add this line to make the sidebar start below the navbar */
+  width: 250px;
+  height: calc(100% - 60px); /* Subtract the navbar height from the total height */
+  background-color: WHITE;
+  color: BLACK;
+  transition: left 0.3s ease-in-out;
+  padding-top: 20px;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed; /* This keeps the navbar fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures the navbar stays above the sidebar */
+}
+
+/* Optional: Add padding to the body to ensure content is not hidden behind the navbar */
+body {
+  padding-top: 60px; /* Same height as the navbar */
+}
+@media (max-width: 768px) {
+    .specialization-container {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .specialization-container {
+        grid-template-columns: 1fr; /* One card per row */
+        padding: 0 3%;
+    }
+
+    h2 {
+        font-size: 24px; /* Adjust heading size for smaller screens */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/images/logo.png" alt="logo">
+      <span>HealthyWealthy</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#appointments">Appointments</a></li>
+      <!-- <li><a href="#chat">Chat</a></li> -->
+      <li><a href="/profile">Profile</a></li>
+      <!-- <li><a href="#logout">Logout</a></li> -->
+    </ul>
+  </nav>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <ul id="doctor-list">
+      <!-- Doctors will be dynamically loaded here -->
+    </ul>
+  </div>
+
+  <!-- Doctor Specialization Page -->
+  <section id="doctor-specializations" class="specializations">
+    <h2>Choose your Specialized Doctor</h2>
+    <div class="specialization-container">
+      <!-- Specialization Cards -->
+      <div class="specialization-card">
+        ❤️
+        <div class="specialization-name">Cardiology</div>
+        <div class="specialization-description">Cardiology involves the diagnosis and treatment of heart conditions.</div>
+        <button class="specialization-btn" data-specialization="Cardiology">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        🌞
+        <div class="specialization-name">Dermatology</div>
+        <div class="specialization-description">Dermatology focuses on skin, hair, and nail disorders.</div>
+        <button class="specialization-btn" data-specialization="Dermatology">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        🧠
+        <div class="specialization-name">Neurology</div>
+        <div class="specialization-description">Neurology deals with disorders of the nervous system.</div>
+        <button class="specialization-btn" data-specialization="Neurology">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        💪
+        <div class="specialization-name">Orthopedics</div>
+        <div class="specialization-description">Orthopedics treats bones, joints, muscles, and ligaments.</div>
+        <button class="specialization-btn" data-specialization="Orthopedics">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        👶
+        <div class="specialization-name">Pediatrics</div>
+        <div class="specialization-description">Pediatrics focuses on the medical care of infants and children.</div>
+        <button class="specialization-btn" data-specialization="Pediatrics">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        🔪
+        <div class="specialization-name">General Surgery</div>
+        <div class="specialization-description">General Surgery involves operations to treat injuries and diseases.</div>
+        <button class="specialization-btn" data-specialization="General Surgery">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        👁️
+        <div class="specialization-name">Ophthalmology</div>
+        <div class="specialization-description">Ophthalmology focuses on the eyes and vision care.</div>
+        <button class="specialization-btn" data-specialization="Ophthalmology">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        💊
+        <div class="specialization-name">Pharmacology</div>
+        <div class="specialization-description">Pharmacology is the study of drugs and their effects on the human body.</div>
+        <button class="specialization-btn" data-specialization="Pharmacology">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        ⚖️
+        <div class="specialization-name">Forensic Medicine</div>
+        <div class="specialization-description">Forensic medicine focuses on determining the cause of death and injury.</div>
+        <button class="specialization-btn" data-specialization="Forensic Medicine">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        💉
+        <div class="specialization-name">Immunology</div>
+        <div class="specialization-description">Immunology focuses on the immune system and its disorders.</div>
+        <button class="specialization-btn" data-specialization="Immunology">View Doctors</button>
+    </div>
+
+  
+
+    <div class="specialization-card">
+        🧑‍⚕️
+        <div class="specialization-name">Geriatrics</div>
+        <div class="specialization-description">Geriatrics focuses on health care for elderly individuals.</div>
+        <button class="specialization-btn" data-specialization="Geriatrics">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        💗
+        <div class="specialization-name">Endocrinology</div>
+        <div class="specialization-description">Endocrinology focuses on glands and the hormones they produce.</div>
+        <button class="specialization-btn" data-specialization="Endocrinology">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        🦷
+        <div class="specialization-name">Periodontics</div>
+        <div class="specialization-description">Periodontics specializes in the prevention, diagnosis, and treatment of periodontal disease.</div>
+        <button class="specialization-btn" data-specialization="Periodontics">View Doctors</button>
+    </div>
+
+    <div class="specialization-card">
+        🧬
+        <div class="specialization-name">Genetics</div>
+        <div class="specialization-description">Genetics focuses on inherited diseases and gene therapy.</div>
+        <button class="specialization-btn" data-specialization="Genetics">View Doctors</button>
+    </div>
+
+
+    <div class="specialization-card">
+      🧬
+      <div class="specialization-name">Genetics</div>
+      <div class="specialization-description">Genetics focuses on inherited diseases and gene therapy.</div>
+      <button class="specialization-btn" data-specialization="buffalo vet">View Doctors</button>
+  </div>
+
+      <!-- Add more specializations as needed -->
+  </div>
+  </section>
+<!-- 
+  <script>
+    // Handle clicking on specialization "View Doctors" button
+    document.querySelectorAll('.specialization-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const specialization = this.getAttribute('data-specialization');
+        
+        // Fetch doctors from the server based on specialization
+        fetch(`/api/doctors/specialization/${specialization}`)
+          .then(response => response.json())
+          .then(data => {
+            const sidebar = document.getElementById('sidebar');
+            const doctorList = document.getElementById('doctor-list');
+            doctorList.innerHTML = '';  // Clear previous list
+
+            // Populate doctors list with response data
+            data.forEach(doctor => {
+              const li = document.createElement('li');
+              li.innerHTML = `<a href="#">${doctor.name}</a>`;
+              doctorList.appendChild(li);
+            });
+
+            // Show the sidebar
+            sidebar.classList.add('open');
+
+            // Change the specialization grid to 2 columns
+            document.querySelector('.specialization-container').classList.add('grid-2-columns');
+          })
+          .catch(error => {
+            console.error('Error fetching doctors:', error);
+            alert('Failed to load doctors. Please try again later.');
+          });
+      });
+    });
+  </script> -->
+
+  <script>
+    // Handle clicking on specialization "View Doctors" button
+    document.querySelectorAll('.specialization-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const specialization = this.getAttribute('data-specialization');
+        
+        // Fetch doctors from the server based on specialization
+        fetch(`/api/doctors/specialization/${specialization}`)
+          .then(response => response.json())
+          .then(data => {
+            const sidebar = document.getElementById('sidebar');
+            const doctorList = document.getElementById('doctor-list');
+            doctorList.innerHTML = '';  // Clear previous list
+  
+            // If there are no doctors
+            if (data.length === 0) {
+              // Create and display the message div
+              const doctorDiv = document.createElement('div');
+              doctorDiv.id = 'doctorDiv';
+              doctorDiv.textContent = `No doctors found for ${specialization.charAt(0).toUpperCase() + specialization.slice(1)} specialization.`;
+              doctorDiv.style.color = 'red';
+              doctorList.appendChild(doctorDiv);
+            } else {
+              // Add the heading "All and [specialization name]"
+              const heading = document.createElement('h2');
+              heading.textContent = `All ${specialization.charAt(0).toUpperCase() + specialization.slice(1)} Doctors`;
+              doctorList.appendChild(heading);
+  
+              // Populate doctors list with response data
+              data.forEach(doctor => {
+                const doctorDivItem = document.createElement('div');
+                doctorDivItem.classList.add('doctor-item');
+                doctorDivItem.innerHTML = `
+                  <div class="doctor-img">
+                    <img src="/images/profile-picture.jpg" alt="Doctor Picture" />
+                  </div>
+                  <div class="doctor-info">
+<a href="/doctor-profile-for-user?doctorId=${doctor._id}">${doctor.name}</a>
+                    <p>${doctor.specialization}</p>
+                  </div>
+                `;
+                doctorList.appendChild(doctorDivItem);
+              });
+            }
+  
+            // Show the sidebar
+            sidebar.classList.add('open');
+  
+            // Change the specialization grid to 2 columns
+            document.querySelector('.specialization-container').classList.add('grid-2-columns');
+          })
+          .catch(error => {
+            console.error('Error fetching doctors:', error);
+            
+            // Create doctorDiv only inside the catch block if an error occurs
+            const sidebar = document.getElementById('sidebar');
+            const doctorList = document.getElementById('doctor-list');
+            const doctorDiv = document.createElement('div'); // Create the div dynamically
+            
+            doctorDiv.id = 'doctorDiv';
+            doctorDiv.textContent = `No Doctor found for ${specialization.charAt(0).toUpperCase() + specialization.slice(1)}`;
+            doctorDiv.style.color = 'red';
+            doctorList.appendChild(doctorDiv); // Append to doctor list
+            
+            // Ensure the sidebar is open
+            sidebar.classList.add('open');
+          });
+      });
+    });
+  </script>
+    
+</body>
+</html>
